@@ -1,0 +1,12 @@
+/**
+ * Styles for WCMS18 Weather Widget
+ */
+
+ .widget_weatherwidget .current-weather {
+	padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.widget_weatherwidget .weather-conditions {
+	text-align: center;
+}

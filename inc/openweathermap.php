@@ -19,13 +19,7 @@ function owm_get_current_weather($city, $country) {
     $current_weather['humidity'] = $data->main->humidity;
     $current_weather['city'] = $data->name;
     $current_weather['country'] = $data->sys->country;
-
-    $weather_conditions = [];
-    foreach ($data->weather as $weather) {
-        array_push($weather_conditions, $weather->description);
-    }
-
-    $current_weather['conditions'] = implode(', ', $weather_conditions);
+    $current_weather['conditions'] = $data->weather;
     
     return $current_weather;
 }
