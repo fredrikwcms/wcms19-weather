@@ -43,42 +43,23 @@ class WeatherWidget extends WP_Widget {
 		// get city and country for this widget
 		$city = $instance['city'];
 		$country = $instance['country'];
-
-		// get weather conditions for the specified city and country
-		$current_weather = owm_get_current_weather($city, $country);
-
-		// display weather conditions for specified city and country
-		// echo "In <strong>" . $city . "</strong> the weather is like this: <br>";
-		// echo "Temparature: " . $current_weather['temparature'] . "&deg; C<br>";
-		// echo "Humidity: " . $current_weather['humidity'] . "%<br>";
-		// echo "Conditions: " . $current_weather['conditions'] . "<br>";
+	
+		// display loading spinner
 		?>
-			<div class="current-weather">
-				<div class="weather-conditions">
-					<h3>Current weather in <?php echo $city; ?></h3>
-
-					<?php
-						foreach($current_weather['conditions'] as $condition) {
-							?>
-								<img
-									src="http://openweathermap.org/img/w/<?php echo $condition->icon; ?>.png"
-									title="<?php echo $condition->description; ?>"
-									alt="<?php echo $condition->main; ?>"
-								>
-							<?php
-						}
-					?>
-				</div>
-				
-				<dl>
-					<dt>Tempatature</dt>
-					<dd><?php echo $current_weather['temparature']; ?></dd>	
-
-					<dt>Humidity</dt>
-					<dd><?php echo $current_weather['humidity']; ?></dd>
-				</dl>
-				
+			<div class="current-weather" data-city="<?php echo $city; ?>" data-country="<?php echo $country; ?>">
+				<em><small>Loading...</small></em>
 			</div>
+
+			<!-- <script>
+				jQuery(document).ready(function(){
+					ww_get_current_weather(
+						'<?php // echo $widget_id; ?>',
+						'<?php // echo $city; ?>',
+						'<?php // echo $country; ?>'
+					);
+				});
+
+			</script> -->
 		<?php 
 		// close widget
 		echo $after_widget;
